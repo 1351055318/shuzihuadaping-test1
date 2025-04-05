@@ -12,7 +12,8 @@
 
 ## 预览效果
 
-![数字化大屏预览](https://raw.githubusercontent.com/1351055318/shuzihuadaping-test1/master/preview.png)
+![image](https://github.com/user-attachments/assets/25fb34ac-bebf-4161-a249-03e8b186c7d1)
+
 
 ## 技术栈
 
