@@ -1,54 +1,102 @@
-# React + TypeScript + Vite
+# 数字化大屏展示系统
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+这是一个基于React和ECharts的数字化大屏展示系统，主要用于展示全球贸易流向和业务数据。该系统具有美观的UI界面和丰富的数据可视化效果，适用于商业智能分析和数据监控场景。
 
-Currently, two official plugins are available:
+## 功能特点
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **全球贸易流向图**：直观展示全球各主要国家与中国的贸易往来
+- **动态数据更新**：每3秒自动更新数据，模拟实时数据流
+- **交互式体验**：支持地图缩放、悬停查看详情等交互功能
+- **自适应布局**：适配不同大小的屏幕和显示设备
+- **数据可视化**：利用多种图表类型展示业务数据
 
-## Expanding the ESLint configuration
+## 预览效果
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![数字化大屏预览](https://raw.githubusercontent.com/1351055318/shuzihuadaping-test1/master/preview.png)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 技术栈
+
+- **前端框架**：React 18 + TypeScript
+- **构建工具**：Vite
+- **UI组件**：Styled Components
+- **数据可视化**：ECharts 4.9.0
+- **地图组件**：自定义笛卡尔坐标系地图
+
+## 安装使用
+
+### 安装依赖
+
+```bash
+# 安装项目依赖
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 开发环境运行
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+# 运行开发服务器
+npm run dev
 ```
+
+开发服务器启动后，访问 http://localhost:5173 即可查看效果。
+
+### 构建生产版本
+
+```bash
+# 构建生产版本
+npm run build
+```
+
+构建后的文件将生成在 `dist` 目录中。
+
+## 项目结构
+
+```
+src/
+├── assets/        # 静态资源
+│   └── maps/      # 地图相关数据
+├── components/    # 组件目录
+│   ├── WorldMapCard.tsx     # 世界地图组件
+│   ├── ChartCard.tsx        # 图表卡片组件
+│   └── ...                  # 其他组件
+├── utils/         # 工具函数
+│   └── mockData.ts          # 模拟数据
+└── main.tsx       # 应用入口
+```
+
+## 主要组件
+
+### WorldMapCard
+
+展示全球贸易流向的地图组件，支持以下功能：
+
+- 显示各国业务中心标记
+- 动态展示贸易流向线
+- 根据贸易量自动调整线条粗细和颜色
+- 周期性更新数据
+
+### ChartCard
+
+通用图表卡片组件，用于包装各类数据图表。
+
+## 数据模拟
+
+本项目使用模拟数据进行展示，实际应用中可以替换为后端API数据源。
+
+## 自定义开发
+
+### 添加新图表
+
+1. 在 `components` 目录下创建新的图表组件
+2. 在 `App.tsx` 中引入并使用新组件
+
+### 修改世界地图
+
+世界地图组件使用笛卡尔坐标系替代地理坐标系，如需修改：
+
+1. 编辑 `src/components/WorldMapCard.tsx` 文件
+2. 调整坐标系配置和数据映射方式
+
+## 许可证
+
+MIT
